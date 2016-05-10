@@ -24,3 +24,11 @@ module INeedATaco
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+
+Yelp.client.configure do |config|
+  config.consumer_key = "TRgLLOEBw08IjXHu5UhLNQ"
+  config.consumer_secret = "V-vqHVlrUEB-3W3zLgrtqQK2L-U"
+  config.token = "IFgP0jlbKHzP3x6o2v8Asi_VS22N3zbe"
+  config.token_secret = "54O_9W2HGl_1GP0PgnZdNV_9g3E"
+end
