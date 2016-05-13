@@ -8,7 +8,7 @@
   this.url = url
   this.ratingImg = ratingImg
   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude), map: this.map, icon: '/assets/tacoicon.png'})
-  this.infowindow = new google.maps.InfoWindow({content: '<a href='+this.url+'>'+this.restaurantName+'</a><br><img src='+this.ratingImg+'><br><img src="'+this.image+'">"'})
+  this.infowindow = new google.maps.InfoWindow({content: '<a href='+this.url+'>'+this.restaurantName+'</a><br><img src='+this.ratingImg+'><br><img src="'+this.image+'"><br><a href="https://maps.google.com?saddr=Current+Location&daddr='+this.latitude+','+this.longitude+'">Directions</a>'})
   this.addClickListenerToMarker();
 }
 
