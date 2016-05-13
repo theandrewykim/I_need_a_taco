@@ -1,13 +1,14 @@
  var tacoEats = []
- function tacoPlace(latitude, longitude, name, image, url, map) {
+ function tacoPlace(latitude, longitude, name, image, url, ratingImg, map) {
   this.latitude = latitude;
   this.longitude = longitude;
   this.restaurantName = name;
   this.map = map;
   this.image = image
   this.url = url
+  this.ratingImg = ratingImg
   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude), map: this.map, icon: '/assets/tacoicon.png'})
-  this.infowindow = new google.maps.InfoWindow({content: '<a href='+this.url+'>'+this.restaurantName+'</a><br><img src="'+this.image+'">"'})
+  this.infowindow = new google.maps.InfoWindow({content: '<a href='+this.url+'>'+this.restaurantName+'</a><br><img src='+this.ratingImg+'><br><img src="'+this.image+'">"'})
   this.addClickListenerToMarker();
 }
 
@@ -74,7 +75,7 @@ function initialize() {
         dataType: 'json'
       }).done(function(response) {
         tacoEats = response.businesses
-        tacoMaps = tacoEats.map(function(restaraunt) { return new tacoPlace(restaraunt.location.coordinate.latitude, restaraunt.location.coordinate.longitude, restaraunt.name, restaraunt.image_url, restaraunt.url, map) });
+        tacoMaps = tacoEats.map(function(restaraunt) { return new tacoPlace(restaraunt.location.coordinate.latitude, restaraunt.location.coordinate.longitude, restaraunt.name, restaraunt.image_url, restaraunt.url, restaraunt.rating_img_url_small, map) });
       }).fail(function(error){
         console.log("failed!")
       })
