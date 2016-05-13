@@ -12,9 +12,14 @@
   this.addClickListenerToMarker();
 }
 
+var oldinfowindow = 0;
 tacoPlace.prototype.addClickListenerToMarker = function() {
   this.marker.addListener('click', function() {
+    if (oldinfowindow !=  0){
+    oldinfowindow.close()
+  }
     this.infowindow.open(this.map, this.marker);
+    oldinfowindow = this.infowindow
   }.bind(this));
 };
 
