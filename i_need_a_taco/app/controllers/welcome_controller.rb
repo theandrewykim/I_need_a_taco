@@ -3,8 +3,7 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    parameters = { term: params[:term], limit: 16 }
-    render json: Yelp.client.search('Little Neck', {term:'tacos'})
-    # binding.pry
+    coordinates = { latitude: params[:latitude] , longitude: params[:longitude] }
+    render json: Yelp.client.search_by_coordinates(coordinates, { term: "Mexican"})
   end
 end
