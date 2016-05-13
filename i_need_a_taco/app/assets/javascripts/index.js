@@ -4,9 +4,16 @@
   this.longitude = longitude;
   this.restarauntName = name;
   this.map = map;
-  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude), map: this.map});
-  this.marker.setMap(this.map);
+  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude), map: this.map})
+  this.infowindow = new google.maps.InfoWindow({content: this.restarauntName})
+  this.addClickListenerToMarker();
 }
+
+tacoPlace.prototype.addClickListenerToMarker = function() {
+  this.marker.addListener('click', function() {
+    this.infowindow.open(this.map, this.marker);
+  }.bind(this));
+};
 
 
 
